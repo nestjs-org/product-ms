@@ -1,13 +1,13 @@
 import { HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { PrismaClient } from '@prisma/client';
 import { PaginationDto } from 'src/common/dto/dto.pagination';
 import { RpcException } from '@nestjs/microservices';
+import { PrismaService } from 'src/prisma/prisma.provider';
 
 @Injectable()
 export class ProductService {
-  constructor(private prismaClient: PrismaClient) { }
+  constructor(private prismaClient: PrismaService) { }
 
   async create(createProductDto: CreateProductDto) {
     const productCreated = await this.prismaClient.product.create({ data: createProductDto });
