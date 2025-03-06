@@ -16,7 +16,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     forbidNonWhitelisted: true
-  }))
+  }));
   await app.listen();
   logger.log("microservice product running on port: "+envs.port, 'and nats: ', envs.nats_servers)
 }
